@@ -219,7 +219,7 @@ if ! file_exists "$CLORE_HOSTING_DIRECTORY/.miniconda/bin/conda"; then
     exit 1
 else
     if ! folder_exists "$CLORE_HOSTING_DIRECTORY/.miniconda-env"; then
-        /opt/clore-hosting/.miniconda/bin/conda config --set accept_channel_terms true
+        /opt/clore-hosting/.miniconda/bin/conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
         /opt/clore-hosting/.miniconda/bin/conda create -y -k --prefix /opt/clore-hosting/.miniconda-env python=3.12.1 -y
         if [ $? -ne 0 ]; then
             if folder_exists "$CLORE_HOSTING_DIRECTORY/.miniconda-env"; then
