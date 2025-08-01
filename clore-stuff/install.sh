@@ -28,8 +28,6 @@ usage() {
     exit 1
 }
 
-#!/bin/bash
-
 # Check if the NVIDIA driver is present
 if ! command -v nvidia-smi &> /dev/null
 then
@@ -268,7 +266,7 @@ chmod +x /opt/clore-hosting/clore.sh
 if file_exists "/opt/clore-hosting/service.sh"; then
     rm /opt/clore-hosting/service.sh
 fi
-tee -a /opt/clore-hosting/service.sh > /dev/null <<'EOT'
+tee /opt/clore-hosting/service.sh > /dev/null <<'EOT'
 #!/bin/bash
 source /opt/clore-hosting/.miniconda/etc/profile.d/conda.sh && conda activate /opt/clore-hosting/.miniconda-env
 CLIENT_DIR=/opt/clore-hosting/hosting
