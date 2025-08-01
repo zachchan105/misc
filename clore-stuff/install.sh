@@ -219,7 +219,10 @@ if ! file_exists "$CLORE_HOSTING_DIRECTORY/.miniconda/bin/conda"; then
     exit 1
 else
     if ! folder_exists "$CLORE_HOSTING_DIRECTORY/.miniconda-env"; then
-        /opt/clore-hosting/.miniconda/bin/conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
+        # ─── Ensure conda-anaconda-tos plugin is installed ─────────────────────────
+        /opt/clore-hosting/.miniconda/bin/conda install -y -c anaconda conda-anaconda-tos
+        # ─── Auto-accept any future TOS without prompting ──────────────────────────
+        export CONDA_PLUGINS_AUTO_ACCEPT_TOS=true
         /opt/clore-hosting/.miniconda/bin/conda create -y -k --prefix /opt/clore-hosting/.miniconda-env python=3.12.1 -y
         if [ $? -ne 0 ]; then
             if folder_exists "$CLORE_HOSTING_DIRECTORY/.miniconda-env"; then
