@@ -258,7 +258,7 @@ if file_exists "/opt/clore-hosting/clore.sh"; then
     rm /opt/clore-hosting/clore.sh
 fi
 
-tee -a /opt/clore-hosting/clore.sh > /dev/null <<EOT
+tee /opt/clore-hosting/clore.sh > /dev/null <<'EOT'
 #!/bin/bash
 source /opt/clore-hosting/.miniconda/etc/profile.d/conda.sh && conda activate /opt/clore-hosting/.miniconda-env
 cd /opt/clore-hosting/hosting
